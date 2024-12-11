@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toonify</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .spin {
+      border: 4px dotted #3b82f6;
+      border-top-color: transparent;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center">
+  <nav class="bg-blue-500 text-white p-4 w-full">
+    <div class="container mx-auto">
+      <h1 class="text-2xl font-bold">Photo to 2D Art</h1>
+    </div>
+  </nav>
+
+  <div class="container mx-auto p-4">
+    <form id="uploadForm" class="bg-white p-6 shadow-md rounded-md flex flex-col items-center">
+      <label class="block text-gray-700 font-bold mb-2">Upload your photo:</label>
+      <input id="fileInput" type="file" accept="image/*" class="mb-4" />
+      <div id="previewContainer" class="mb-4"></div>
+      <button type="button" id="convertButton" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+        Convert to 2D Animation
+      </button>
+    </form>
+
+    <div id="loadingContainer" class="text-center mt-8 hidden">
+      <div class="flex justify-center items-center space-x-2">
+        <div class="spin"></div>
+        <span class="text-lg font-bold">Converting... Please wait</span>
+      </div>
+    </div>
+
+    <div id="resultContainer" class="mt-8 text-center hidden">
+      <h2 class="text-xl font-bold mb-4">Converted Image</h2>
+      <img id="convertedImage" src="" alt="Converted" class="mx-auto shadow-md rounded-md" />
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
